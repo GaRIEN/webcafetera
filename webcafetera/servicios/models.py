@@ -5,7 +5,7 @@ from django.db import models
 class Service(models.Model):
     title=models.CharField(max_length=200, verbose_name='titulo')
     subtitle=models.CharField(max_length=200, verbose_name='subtitulo')
-    content=models.CharField(verbose_name='contenido')
+    content=models.TextField(verbose_name='contenido')
     created=models.DateTimeField(auto_now_add=True)
     update=models.DateTimeField(auto_now=True)
     
