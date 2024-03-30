@@ -27,17 +27,17 @@
           </p>
           <p class="mb-0 mbt">
             <span class="section-heading-under">Publicado por <em><b>{{cp.autor}}</b></em> en
-              <!-- <em><a href="#" class="link">{{cp.categoria}}</a>,
-                  </em></span> -->
-              <!-- para filtar cuando es muchos a muchos -->
-              {% for Categoria in cp.categoria.all %}
-                {{Categoria.name}}
-                  {% if not forloop.last %}
-                  ,
-                  {% endif %}
+              <em>
+                  {% for Categoria in cp.categoria.all %}
+                       <a href="{% url 'blog:categoria' categoria_id=Categoria.id %}"
+                      class="link">{{Categoria.name}}</a>
+                      {% if not forloop.last %}
+                      ,
+                      {% endif %}
 
-              {% endfor %}
-
+                  {% endfor %}
+              </em>
+          </span>
           </p>
         </div>
       </div>
