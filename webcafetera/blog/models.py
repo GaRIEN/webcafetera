@@ -25,7 +25,8 @@ class Post(models.Model):
     publicado = models.DateTimeField(verbose_name='fecha de publicacion', default=now)
     image=models.ImageField(upload_to='blog', verbose_name='imagen',null=True, blank=True)
     autor=models.ForeignKey(User,verbose_name='Autor', on_delete=models.CASCADE)
-    categoria=models.ManyToManyField(Categoria,verbose_name='categoria')
+    #para esto agregamos related
+    categoria=models.ManyToManyField(Categoria,verbose_name='categoria',related_name='get_posts')
     created=models.DateTimeField(auto_now_add=True)
     updated=models.DateTimeField(auto_now=True)
     

@@ -8,6 +8,9 @@ class CategoriAdmin(admin.ModelAdmin):
     
 class PostAdmin(admin.ModelAdmin):
     readonly_fields=('created','updated')
+    list_display=('title','autor')
+    search_fields=('title','autor__username')
+    
     
 admin.site.register(Categoria,CategoriAdmin)
 admin.site.register(Post,PostAdmin)
