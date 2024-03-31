@@ -4,7 +4,8 @@ from . import views
 
 
 urlpatterns = [
-  path('<int:pagina_id>/',views.pagina, name='paginas')
-
+    path('pagina/<int:pagina_id>/', views.pagina, name='paginas'),
+    # Otras URLs aquí...
 ]
+
 

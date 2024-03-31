@@ -67,38 +67,54 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav mx-auto">
-            <li class="nav-item {% if request.path == '/' %} active {% endif %} px-lg-4">
+            <li
+              class="nav-item {% if request.path == '/' %} active {% endif %} px-lg-4"
+            >
               <a
                 class="nav-link text-uppercase text-expanded"
                 href="{% url 'home' %}"
                 >Inicio</a
               >
             </li>
-            <li class="nav-item {% if request.path == '/historia/' %} active {% endif %} px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="{% url 'historia:historia' %}"
+            <li
+              class="nav-item {% if request.path == '/historia/' %} active {% endif %} px-lg-4"
+            >
+              <a
+                class="nav-link text-uppercase text-expanded"
+                href="{% url 'historia:historia' %}"
                 >Historia</a
               >
             </li>
-            <li class="nav-item {% if request.path == '/servicios/' %} active {% endif %} px-lg-4">
+            <li
+              class="nav-item {% if request.path == '/servicios/' %} active {% endif %} px-lg-4"
+            >
               <a
                 class="nav-link text-uppercase text-expanded"
                 href="{% url 'servicios:servicios' %}"
                 >Servicios</a
               >
             </li>
-            <li class="nav-item {% if request.path == '/visitanos/' %} active {% endif %} px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="{% url 'visitanos:visitanos' %}"
+            <li
+              class="nav-item {% if request.path == '/visitanos/' %} active {% endif %} px-lg-4"
+            >
+              <a
+                class="nav-link text-uppercase text-expanded"
+                href="{% url 'visitanos:visitanos' %}"
                 >Visítanos</a
               >
             </li>
-            <li class="nav-item {% if request.path == '/contacto/' %} active {% endif %} px-lg-4">
+            <li
+              class="nav-item {% if request.path == '/contacto/' %} active {% endif %} px-lg-4"
+            >
               <a
                 class="nav-link text-uppercase text-expanded"
                 href="{% url 'contacto:contacto' %}"
                 >Contacto</a
               >
             </li>
-            <li class="nav-item {% if request.path == '/blog/' %} active {% endif %}  px-lg-4">
+            <li
+              class="nav-item {% if request.path == '/blog/' %} active {% endif %} px-lg-4"
+            >
               <a
                 class="nav-link text-uppercase text-expanded"
                 href="{% url 'blog:blog' %}"
@@ -110,32 +126,28 @@
       </div>
     </nav>
 
-    {% block content %} 
-    
-    {% endblock content %}
+    {% block content %} {% endblock content %}
     <!-- Pié de página -->
     <footer class="footer text-faded text-center py-5">
       <div class="container">
         <p class="m-0">
           {% if LINK_TWITER %}
-            <a href="{{LINK_TWITER}}" class="link">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          {% endif %}
-          
-          {% if LINK_FACEBOOK  %}
+          <a href="{{LINK_TWITER}}" class="link">
+            <span class="fa-stack fa-lg">
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+            </span>
+          </a>
+          {% endif %} 
+          {% if LINK_FACEBOOK %}
           <a href="{{LINK_FACEBOOK}}" class="link">
             <span class="fa-stack fa-lg">
               <i class="fa fa-circle fa-stack-2x"></i>
               <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
             </span>
           </a>
-          {% endif %}
-          
-          {% if LINK_INSTAGRAM  %}
+          {% endif %} 
+          {% if LINK_INSTAGRAM %}
           <a href="{{LINK_INSTAGRAM}}" class="link">
             <span class="fa-stack fa-lg">
               <i class="fa fa-circle fa-stack-2x"></i>
@@ -145,9 +157,13 @@
           {% endif %}
         </p>
         <p class="m-0 mbt">
-          <a href="sample.html" class="link">Política de privacidad</a> ·
-          <a href="sample.html" class="link">Aviso legal</a> ·
-          <a href="sample.html" class="link">Cookies</a>
+          {% load paginas_extras %}
+          {% get_paginas  as lista_paginas %}
+            
+            {% for pagina in lista_paginas  %}
+            <a href="{% url 'paginas' pagina.id %}" class="link">{{ pagina.title }}</a> ·
+            {% endfor %}
+              
         </p>
         <p class="m-0 mbt1">&copy; La Caffettiera 2018</p>
       </div>
@@ -158,3 +174,4 @@
     <script src="{% static 'core/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
   </body>
 </html>
+S
