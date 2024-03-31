@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'core',
     'historia',
     'servicios.apps.ServiciosConfig',
+    'social.apps.SocialConfig',
     'visitanos',
+    
 ]
 
 MIDDLEWARE = [
