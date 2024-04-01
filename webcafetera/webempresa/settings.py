@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+from ckeditor_uploader.fields import RichTextUploadingField
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -38,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'ckeditor',
     'contacto',
     'core',
     'historia',
@@ -135,3 +138,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL='/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
+
+
+#ckeditor
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+content = RichTextUploadingField(
+    verbose_name='contenido',
+    config_name='default',
+    external_plugin_resources=[('youtube', '/static/youtube/ckeditor/plugins/youtube/')],
+)
+

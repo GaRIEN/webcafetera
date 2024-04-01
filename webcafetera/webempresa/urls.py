@@ -27,6 +27,9 @@ urlpatterns = [
     path('pagina/',include('paginas.urls')),
     path('servicios/',include('servicios.urls')),
     path('visitanos/',include('visitanos.urls')),
+    #importa esto :  npm install --save @ckeditor/ckeditor5-build-classic
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+
 ]
 
 if settings.DEBUG:
